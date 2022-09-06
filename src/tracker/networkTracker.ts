@@ -7,11 +7,20 @@ export const networkTracker = (options: IOptions) => {
 	proxy({
 		onResponse: (response, handler) => {
 			handler.next(response)
-			reportTracker(options, {
-				type: 'NETWORK_INFO',
-				eventName: 'xhrResponse',
-				xhrResponse: response
-			})
+
+			if (options.networkTrackerConfig?.isFullReport) {
+				reportTracker(options, {
+					type: 'NETWORK_INFO',
+					eventName: 'xhrResponse',
+					xhrResponse: response
+				})
+			} else if (response.status !== 200) {
+				reportTracker(options, {
+					type: 'NETWORK_INFO',
+					eventName: 'xhrResponse',
+					xhrResponse: response
+				})
+			}
 		},
 		onError: (err, handler) => {
 			handler.next(err)

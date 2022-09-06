@@ -53,7 +53,10 @@ class BuriedPointTracker {
 			isLocationInfo: false,
 			isRouteTracker: false,
 			isErrorTracker: false,
-			isNetworkTracker: false
+			isNetworkTracker: false,
+			networkTrackerConfig: {
+				isFullReport: false
+			}
 		}
 	}
 }

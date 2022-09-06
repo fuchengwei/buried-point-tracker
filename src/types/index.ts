@@ -7,6 +7,9 @@ export interface IOptions {
 	isRouteTracker?: boolean
 	isErrorTracker?: boolean
 	isNetworkTracker?: boolean
+	networkTrackerConfig?: {
+		isFullReport: boolean
+	}
 	userId?: string
 	customParams?: Record<string, any>
 }
