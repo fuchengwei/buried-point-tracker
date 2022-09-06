@@ -6,12 +6,20 @@ export interface IOptions {
 	isLocationInfo?: boolean
 	isRouteTracker?: boolean
 	isErrorTracker?: boolean
+	isNetworkTracker?: boolean
 	userId?: string
 	customParams?: Record<string, any>
 }
 
 export interface IReportData {
-	type: 'ROUTE_CHANGE' | 'RUNTIME_ERROR' | 'PROMISE_ERROR' | 'VUE_ERROR'
+	type:
+		| 'ROUTE_CHANGE'
+		| 'RUNTIME_ERROR'
+		| 'PROMISE_ERROR'
+		| 'VUE_ERROR'
+		| 'NETWORK_ERROR'
+		| 'NETWORK_INFO'
+		| 'RESOURCE_INFO'
 
 	[key: string]: any
 }
