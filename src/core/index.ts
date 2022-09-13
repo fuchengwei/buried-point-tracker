@@ -1,6 +1,7 @@
 import { routeTracker } from '@/tracker/routeTracker'
 import { errorTracker, vueErrorTracker } from '@/tracker/errorTracker'
 import { networkTracker } from '@/tracker/networkTracker'
+import { resourcesTracker } from '@/tracker/resourcesTracker'
 import { createLocationScript } from '@/utils/location'
 
 import type { IOptions } from '@/types'
@@ -27,11 +28,11 @@ class BuriedPointTracker {
 		return this
 	}
 
-	public init() {
-		const { isLocationInfo, isRouteTracker, isErrorTracker, isNetworkTracker } = this.options
+	public async init() {
+		const { isLocationInfo, isRouteTracker, isErrorTracker, isNetworkTracker, isResourcesTracker } = this.options
 
 		if (isLocationInfo) {
-			createLocationScript()
+			await createLocationScript()
 		}
 
 		if (isRouteTracker) {
@@ -45,6 +46,10 @@ class BuriedPointTracker {
 		if (isNetworkTracker) {
 			networkTracker(this.options)
 		}
+
+		if (isResourcesTracker) {
+			resourcesTracker(this.options)
+		}
 	}
 
 	private createDefaultOptions() {
@@ -56,7 +61,8 @@ class BuriedPointTracker {
 			isNetworkTracker: false,
 			networkTrackerConfig: {
 				isFullReport: false
-			}
+			},
+			isResourcesTracker: false
 		}
 	}
 }

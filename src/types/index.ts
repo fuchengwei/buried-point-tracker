@@ -10,6 +10,7 @@ export interface IOptions {
 	networkTrackerConfig?: {
 		isFullReport: boolean
 	}
+	isResourcesTracker?: boolean
 	userId?: string
 	customParams?: Record<string, any>
 }

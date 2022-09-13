@@ -16,9 +16,9 @@ export const networkTracker = (options: IOptions) => {
 				})
 			} else if (response.status !== 200) {
 				reportTracker(options, {
-					type: 'NETWORK_INFO',
-					eventName: 'xhrResponse',
-					xhrResponse: response
+					type: 'NETWORK_ERROR',
+					eventName: 'xhrError',
+					xhrError: response
 				})
 			}
 		},
